@@ -26,6 +26,17 @@ const UserCart = () => {
   const phoneNumInputRef = useRef();
   const receiverInputRef = useRef();
 
+  const fixedPrice = 8.99;
+  let subTotalCost = 0;
+  for (let i = 0; i < orderDishes.length; i++) {
+    subTotalCost += fixedPrice * orderDishes[i].items;
+  }
+  subTotalCost.toFixed(2);
+
+  const tax = 1.99;
+  const deliveryFee = 2.99;
+  let totalPrice = (subTotalCost + tax + deliveryFee).toFixed(3);
+
   const removeFromCartHandler = (id) => {
     dispatch(dishesAction.removeDishFromCart(id));
   };
@@ -171,7 +182,7 @@ const UserCart = () => {
                     <div className="text-gray-500 line-clamp-3 px-2">
                       <h5>{dish.name}</h5>
                       <h1>$8.99</h1>
-                      <span>{`cooking time: ${dish.cook_time_minutes}`}</span>
+                      <span>{`cooking time: ${dish.cook_time_minutes} minute`}</span>
                     </div>
                     <p className="text-gray-500 line-clamp-1 pr-2">
                       items: {dish.items}
@@ -187,19 +198,19 @@ const UserCart = () => {
               <div className="flex flex-col mt-6">
                 <div className="flex justify-between">
                   <span className="text-gray-500">Subtotal:</span>
-                  <span className="font-bold text-gray-700">$8.99</span>
+                  <span className="font-bold text-gray-700">{`$${subTotalCost}`}</span>
                 </div>
                 <div className="flex justify-between mt-4">
                   <span className="text-gray-500">Tax:</span>
-                  <span className="font-bold text-gray-700">$8.99</span>
+                  <span className="font-bold text-gray-700">{`$${tax}`}</span>
                 </div>
                 <div className="flex justify-between mt-4">
                   <span className="text-gray-500">Delivery fee:</span>
-                  <span className="font-bold text-gray-700">$8.99</span>
+                  <span className="font-bold text-gray-700">{`$${deliveryFee}`}</span>
                 </div>
                 <div className="flex justify-between mt-4 text-xl">
                   <span className="text-gray-500">Total price:</span>
-                  <span className="font-bold text-gray-700">$8.99</span>
+                  <span className="font-bold text-gray-700">{`$${totalPrice}`}</span>
                 </div>
               </div>
               <div>

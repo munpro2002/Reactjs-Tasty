@@ -26,7 +26,9 @@ const Dish = (props) => {
         className="w-full h-64 rounded-lg my-[1rem] transform transition duration-200 hover:sacle-150 hover:shadow-lg"
       />
       <div className="flex flex-col items-center">
-        <h1 className="text-gray-900 text-lg">{props.name}</h1>
+        <h1 className="text-gray-900 text-lg text-center line-clamp-1">
+          {props.name}
+        </h1>
         <p className="line-clamp-2 overflow-ellipsis overflow-clip text-center text-gray-500 text-sm mt-[8px]">
           {props.description}
         </p>
