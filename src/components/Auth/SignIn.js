@@ -40,7 +40,6 @@ const SignIn = (props) => {
 
   const signInWithGoogleHandler = () => {
     signInWithGoogle().then((res) => {
-      console.log(res);
       dispatch(loginAction.switchLoginStatus());
       localStorage.setItem("informSuccessLogin", true);
       navigate("/home");

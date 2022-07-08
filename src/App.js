@@ -29,7 +29,6 @@ function App() {
       .then((response) => response.json())
       .then((responseData) => {
         setIsLoading(false);
-        console.log(responseData.results);
         dispatch(dishesAction.storeDataFetch(responseData.results));
       });
   }, [dispatch]);
