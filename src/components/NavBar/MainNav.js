@@ -12,7 +12,7 @@ const MainNav = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const changeLoginStatusHandler = () => {
-    localStorage.setItem("informSuccessLogin", true);
+    localStorage.setItem("informSuccessLogin", false);
     dispatch(loginAction.switchLoginStatus());
   };
 
