@@ -55,7 +55,7 @@ const SignUp = (props) => {
   return (
     <form
       onSubmit={submitHandler}
-      className="w-96 bg-white drop-shadow-lg border border-slate-200 mx-auto flex flex-col text-center p-4 rounded-md"
+      className="max-w-[24rem] mt-3 bg-white drop-shadow-lg border border-slate-200 mx-auto flex flex-col text-center p-4 rounded-md"
     >
       <input
         type="email"
