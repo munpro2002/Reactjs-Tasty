@@ -5,6 +5,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { loginAction } from "../../store/LoginData";
+import { dishesAction } from "../../store/DishesData";
 import { useNavigate } from "react-router-dom";
 
 const MainNav = (props) => {
@@ -14,6 +15,7 @@ const MainNav = (props) => {
   const changeLoginStatusHandler = () => {
     localStorage.setItem("informSuccessLogin", false);
     dispatch(loginAction.switchLoginStatus());
+    dispatch(dishesAction.clearOrderDishes());
   };
 
   return (
