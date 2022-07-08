@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { dishesAction } from "../../store/DishesData";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Dish = (props) => {
   const dispatch = useDispatch();
@@ -12,8 +15,19 @@ const Dish = (props) => {
     }
   };
 
+  useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
+
   return (
-    <div className="bg-white border border-gray-100 p-6 text-[#F91944] rounded-lg transform transition duration-500 hover:sacle-150 hover:shadow-lg">
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-anchor-placement="top-bottom"
+      className="bg-white border border-gray-100 p-6 text-[#F91944] rounded-lg transform transition duration-500 hover:sacle-150 hover:shadow-lg"
+    >
       <Link
         to={`/home/${props.id}`}
         className="border border-[#F91944] rounded-full text-[1rem] px-[10px] py-[4px] transform transition duration-200 hover:sacle-150 hover:shadow-lg hover:bg-[#F91944] hover:text-white cursor-pointer"
