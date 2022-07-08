@@ -22,7 +22,7 @@ const Dish = (props) => {
 
   return (
     <div
-      data-aos="fade-right"
+      data-aos="fade"
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
       data-aos-anchor-placement="top-bottom"

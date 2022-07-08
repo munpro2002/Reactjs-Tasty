@@ -16,7 +16,7 @@ const Dishes = () => {
   };
 
   return (
-    <section className="relative max-w-[75rem] my-12 mx-auto px-6 min-h-[5rem]">
+    <section className="relative max-w-[75rem] my-12 mx-auto px-6 min-h-[15rem]">
       {showLoginStatus === "true" && (
         <Modal onCloseCart={closeCartHandler}>
           <div className="bg-white flex flex-col">
