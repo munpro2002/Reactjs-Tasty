@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { dishesAction } from "../../store/DishesData";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
 
 const Dish = (props) => {
   const dispatch = useDispatch();
@@ -15,14 +12,9 @@ const Dish = (props) => {
     }
   };
 
-  useEffect(() => {
-    Aos.init();
-    Aos.refresh();
-  }, []);
-
   return (
     <div
-      data-aos="fade"
+      data-aos="fade-right"
       data-aos-duration="1000"
       data-aos-easing="ease-in-out"
       data-aos-anchor-placement="top-bottom"

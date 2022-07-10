@@ -7,6 +7,7 @@ import DishDetailPage from "./pages/DishDetailPage";
 import { dishesAction } from "./store/DishesData";
 import { useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
+import Aos from "aos";
 
 const options = {
   method: "GET",
@@ -32,6 +33,11 @@ function App() {
         dispatch(dishesAction.storeDataFetch(responseData.results));
       });
   }, [dispatch]);
+
+  useEffect(() => {
+    Aos.init();
+    Aos.refresh();
+  }, []);
 
   return (
     <AnimatePresence exitBeforeEnter>
