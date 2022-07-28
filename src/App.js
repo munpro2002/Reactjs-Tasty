@@ -29,8 +29,11 @@ function App() {
     )
       .then((response) => response.json())
       .then((responseData) => {
-        setIsLoading(false);
-        dispatch(dishesAction.storeDataFetch(responseData.results));
+        if (responseData.results.length !== 0) {
+          console.log(responseData.results);
+          setIsLoading(false);
+          dispatch(dishesAction.storeDataFetch(responseData.results));
+        }
       });
   }, [dispatch]);
 

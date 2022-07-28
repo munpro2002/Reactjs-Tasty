@@ -9,6 +9,7 @@ const animations = {
 const AnimatedRoute = (props) => {
   return (
     <motion.div
+      className="flex flex-col min-h-screen"
       variants={animations}
       initial="initial"
       animate="animate"

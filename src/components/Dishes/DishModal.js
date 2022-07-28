@@ -36,7 +36,9 @@ const Dish = (props) => {
           {props.name}
         </h1>
         <p className="line-clamp-2 overflow-ellipsis overflow-clip text-center text-gray-500 text-sm mt-[8px]">
-          {props.description}
+          {props.description !== ""
+            ? props.description
+            : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique nibh erat, nec condimentum turpis blandit quis. In in leo eu elit placerat dignissim."}
         </p>
         <h2 className="mt-[8px] text-gray-900 text-2xl font-bold ">8.99$</h2>
         <Link

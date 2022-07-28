@@ -3,12 +3,12 @@ import {
   faArrowLeft,
   faMinus,
   faPlus,
-  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { dishesAction } from "../../store/DishesData";
 import { Fragment, useState } from "react";
+import CartNotification from "../User-Cart/CartNotification";
 
 const DishDetail = () => {
   const [items, setItems] = useState(1);
@@ -16,7 +16,6 @@ const DishDetail = () => {
   const dispatch = useDispatch();
   const dishes = useSelector((state) => state.data.dishes);
   const dish = dishes.find((dish) => dish.id.toString() === params.dishId);
-  const totalQuantityInCart = useSelector((state) => state.data.totalQuantity);
   const loginStatus = useSelector((state) => state.loginStatus.isLogin);
 
   if (!dish) return;
@@ -48,15 +47,7 @@ const DishDetail = () => {
             alt="logo"
             className="w-[128px]"
           />
-          <div className="relative flex cursor-pointer">
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              className="text-[26px] text-[#222222]"
-            />
-            <span className="absolute rounded-full w-6 h-6 text-white bg-[#F91944] right-[-8px] top-[-10px] text-center font-bold">
-              {totalQuantityInCart}
-            </span>
-          </div>
+          <CartNotification />
         </div>
       </header>
       <main className="container max-w-[75rem] px-4 mx-auto my-6">
@@ -70,7 +61,9 @@ const DishDetail = () => {
               {dish.name}
             </h1>
             <p className="text-center md:text-left text-gray-500">
-              {dish.description}
+              {dish.description !== ""
+                ? dish.description
+                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique nibh erat, nec condimentum turpis blandit quis. In in leo eu elit placerat dignissim."}
             </p>
             <div className="justify-center md:justify-start flex pt-8 items-center">
               <h1 className="font-extrabold text-3xl">$8.99</h1>

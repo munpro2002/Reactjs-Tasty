@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { dishesAction } from "../../store/DishesData";
@@ -9,6 +9,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 import Modal from "../UI/Modal";
 import NoCartInOrder from "./NoCartInOrder";
+import CartNotification from "./CartNotification";
 
 const UserCart = () => {
   const [isShowModal, setIsShowModal] = useState(false);
@@ -21,7 +22,6 @@ const UserCart = () => {
   const dispatch = useDispatch();
   const dishes = useSelector((state) => state.data.dishes);
   const orderDishes = dishes.filter((dish) => dish.isInCart === true);
-  const totalQuantityInCart = useSelector((state) => state.data.totalQuantity);
   const addressInputRef = useRef();
   const phoneNumInputRef = useRef();
   const receiverInputRef = useRef();
@@ -95,15 +95,7 @@ const UserCart = () => {
             alt="logo"
             className="w-[128px]"
           />
-          <div className="relative flex cursor-pointer">
-            <FontAwesomeIcon
-              icon={faShoppingCart}
-              className="text-[26px] text-[#222222]"
-            />
-            <span className="absolute rounded-full w-6 h-6 text-white bg-[#F91944] right-[-8px] top-[-10px] text-center font-bold">
-              {totalQuantityInCart}
-            </span>
-          </div>
+          <CartNotification />
         </div>
       </header>
       <main className="container max-w-[75rem] mx-auto px-6 my-6">
@@ -189,7 +181,7 @@ const UserCart = () => {
                     </p>
                     <FontAwesomeIcon
                       icon={faTrashCan}
-                      className="text-gray-700"
+                      className="text-gray-700 cursor-pointer"
                       onClick={removeFromCartHandler.bind(null, dish.id)}
                     />
                   </div>
