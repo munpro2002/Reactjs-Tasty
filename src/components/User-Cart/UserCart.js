@@ -164,26 +164,28 @@ const UserCart = () => {
                 {orderDishes.map((dish) => (
                   <div
                     key={dish.id}
-                    className="flex items-center justify-between pt-4 mr-6"
+                    className="flex items-center justify-between pt-4"
                   >
                     <img
                       src={dish.thumbnail_url}
                       alt={dish.name}
                       className="w-[96px] h-[96px] rounded-full"
                     />
-                    <div className="text-gray-500 line-clamp-3 px-2">
-                      <h5>{dish.name}</h5>
+                    <div className="text-gray-500 px-2 w-[202px]">
+                      <h5 className="line-clamp-1">{dish.name}</h5>
                       <h1>$8.99</h1>
                       <span>{`cooking time: ${dish.cook_time_minutes} minute`}</span>
                     </div>
-                    <p className="text-gray-500 line-clamp-1 pr-2">
-                      items: {dish.items}
-                    </p>
-                    <FontAwesomeIcon
-                      icon={faTrashCan}
-                      className="text-gray-700 cursor-pointer"
-                      onClick={removeFromCartHandler.bind(null, dish.id)}
-                    />
+                    <div className="flex flex-col mr-4">
+                      <p className="text-gray-500 line-clamp-1 mb-2">
+                        items: {dish.items}
+                      </p>
+                      <FontAwesomeIcon
+                        icon={faTrashCan}
+                        className="text-gray-700 cursor-pointer"
+                        onClick={removeFromCartHandler.bind(null, dish.id)}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
