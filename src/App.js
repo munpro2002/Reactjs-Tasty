@@ -31,7 +31,6 @@ function App() {
       .then((responseData) => {
         if (responseData.results.length !== 0) {
           console.log(responseData.results);
-          setIsLoading(false);
           dispatch(dishesAction.storeDataFetch(responseData.results));
         }
       });
