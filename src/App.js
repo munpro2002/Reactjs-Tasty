@@ -32,6 +32,7 @@ function App() {
         if (responseData.results.length !== 0) {
           console.log(responseData.results);
           dispatch(dishesAction.storeDataFetch(responseData.results));
+          setIsLoading(false);
         }
       });
   }, [dispatch]);

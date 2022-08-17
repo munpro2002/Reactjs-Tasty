@@ -27,6 +27,9 @@ const Dish = (props) => {
         More Detail
       </Link>
       <img
+        data-aos="zoom-in"
+        data-aos-duration="600"
+        data-aos-easing="ease-in-out"
         src={props.image}
         alt={props.name}
         className="w-full h-64 rounded-lg my-[1rem] transform transition duration-200 hover:sacle-150 hover:shadow-lg"
