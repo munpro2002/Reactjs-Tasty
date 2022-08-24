@@ -4,6 +4,7 @@ import Modal from "../UI/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import noItemsFound from "../../assets/img/no-items-found.png";
 
 const Dishes = () => {
   const dishes = useSelector((state) => state.data.filterDishes);
@@ -43,17 +44,22 @@ const Dishes = () => {
           </div>
         </Modal>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {dishes.map((dish) => (
-          <DishModal
-            id={dish.id}
-            image={dish.thumbnail_url}
-            name={dish.name}
-            description={dish.description}
-            key={dish.id}
-          />
-        ))}
-      </div>
+      {dishes.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {dishes.map((dish) => (
+            <DishModal
+              id={dish.id}
+              image={dish.thumbnail_url}
+              name={dish.name}
+              description={dish.description}
+              key={dish.id}
+            />
+          ))}
+        </div>
+      )}
+      {dishes.length === 0 && (
+        <img className="mx-auto" src={noItemsFound} alt="no items found" />
+      )}
     </section>
   );
 };
