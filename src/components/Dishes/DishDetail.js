@@ -95,7 +95,7 @@ const DishDetail = () => {
             <img
               src={dish.thumbnail_url}
               alt={dish.name}
-              className="mx-auto w-full rounded-full shadow-xl"
+              className="mx-auto w-[50vh] h-[50vh] rounded-full shadow-xl"
             />
           </div>
         </div>
